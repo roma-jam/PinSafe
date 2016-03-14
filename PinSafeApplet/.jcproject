@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Java Card project properties</comment>
+<entry key="ps_applet.PinSafeApp">0xF0:0x00:0x00:0x04:0x48:0xFF:0xFF:0x01</entry>
+<entry key="ps_applet">0xF0:0x00:0x00:0x04:0x48:0xFF:0xFF</entry>
+</properties>
