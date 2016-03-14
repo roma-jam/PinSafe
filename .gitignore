@@ -1,0 +1,5 @@
+.metadata/
+PinSafeApplet/bin/
+PinSafeApplet/src/ps_applet/javacard/ps_applet.cap
+PinSafeApplet/src/ps_applet/javacard/
+RemoteSystemsTempFiles/
