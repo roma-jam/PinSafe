@@ -1,1 +1,1 @@
-Here would be a applet for token
+Here would be a applet part for PinSafe project

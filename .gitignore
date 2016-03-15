@@ -2,4 +2,8 @@
 PinSafeApplet/bin/
 PinSafeApplet/src/ps_applet/javacard/ps_applet.cap
 PinSafeApplet/src/ps_applet/javacard/
+PinSafe_sw/.vs/
+PinSafe_sw/Debug/
+PinSafe_sw/PinSafe/Debug/
+
 RemoteSystemsTempFiles/

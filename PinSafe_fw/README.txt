@@ -1,1 +1,1 @@
-Here would be a firmware for token
+Here would be a firmware part for PinSafe project

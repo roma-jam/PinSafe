@@ -1,1 +1,1 @@
-Here would be a hardware for token
+Here would be a hardware part for PinSafe project
