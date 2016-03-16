@@ -13,12 +13,12 @@ Service Commands (CLA = 0x10)
 - GET INFO (P1 = 0x01)
 CAPDU: 0x80 0x10 0x01 0x00
 RADPU: 0x14 0x00 0x01 0x90 0x00
-	    |    |    |    |    | 
-		|    |    |    |    +---- SW LO
-		|    |    |    +--------- SW HI
-		|    |    +-------------- VERSION LO
-		|    +------------------- VERSION HI
-		+------------------------ FREE STORAGE CAPACITY
+        |    |    |    |    | 
+        |    |    |    |    +---- SW LO
+        |    |    |    +--------- SW HI
+        |    |    +-------------- VERSION LO
+        |    +------------------- VERSION HI
+        +------------------------ FREE STORAGE CAPACITY
 		
 - GET RANDON CHALLANGE (P1 = 0x02)
 CAPDU: 0x80 0x10 0x02 0x00
