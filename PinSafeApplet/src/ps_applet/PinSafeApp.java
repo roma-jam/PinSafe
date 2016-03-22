@@ -33,6 +33,11 @@ public class PinSafeApp extends Applet {
 	final static byte INS_STORAGE				= (byte) 0x30; // Storage commands
 		
 	final static byte P1_STORAGE_NEW			= (byte) 0x00; // Create New Storage
+	final static byte P1_STORAGE_SEARCH			= (byte) 0x01; // Search In Storage
+	final static byte P1_STORAGE_DELETE			= (byte) 0x02; // Delete Storage by CardNumber
+	
+	final static byte P2_STORAGE_SEARCH_PIN		= (byte) 0x01; // Search In Storage by CardNumber
+	final static byte P2_STORAGE_SEARCH_CARD_N	= (byte) 0x02; // Search In Storage by Pin
 	
 	final static short STORAGE_SZ				= (short) 400; // Storage size
 	
@@ -40,6 +45,7 @@ public class PinSafeApp extends Applet {
 	final static short SW_MEMORY_ERR				= (short)0x6701;
 	final static short SW_INVALID_PSSWD				= (short)0x6702;
 	final static short SW_CHALLENGE_NOT_GENERATED	= (short)0x6703;
+	final static short SW_PASS_NOT_VERIFIED			= (short)0x6704;
 	
 	// Applet Version
 	final static byte[] APPLET_VERSION			= { 0x00, 0x05 };
@@ -228,11 +234,61 @@ public class PinSafeApp extends Applet {
 	private void Storage(APDU apdu)
 	{
 		byte[] buffer = apdu.getBuffer();
+		
+//		if(!PASS.isPasswordVerified)
+//		{
+//			ISOException.throwIt(SW_PASS_NOT_VERIFIED);
+//		}
+		
+		final short Lc = (short)(buffer[ISO7816.OFFSET_LC] & 0xff);
+		
 		switch(buffer[ISO7816.OFFSET_P1])
 		{
 			case P1_STORAGE_NEW:
+			{
 				// Create new storage
-			break;
+				if(Lc != 0x14) // Should Be 16 + 4 = 20. 16 bytes - Card Number, 4 bytes - Pin code of card
+				{
+					ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
+				}
+				// Search Free Storage
+				// Place Data in Free Storage
+				// Decrease Storage Capacity
+			}
+				break;
+			
+			case P1_STORAGE_SEARCH:
+			{
+				// SEARCH
+				switch(buffer[ISO7816.OFFSET_P2])
+				{
+					case P2_STORAGE_SEARCH_PIN:
+					{
+						// Search Pin By Card Number
+						// Return Pin of Card
+					}
+						break;
+						
+					case P2_STORAGE_SEARCH_CARD_N:
+					{
+						// Search Card Number by Pin
+					}
+						break;
+					default: 
+						ISOException.throwIt(ISO7816.SW_INCORRECT_P1P2);
+				}
+			}
+				break;
+				
+			case P1_STORAGE_DELETE:
+			{
+				if(Lc != 0x10) // Card Number - 16 bytes 
+				{
+					ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
+				}
+			}
+				break;
+				
 			
 			default:
 				ISOException.throwIt(ISO7816.SW_INCORRECT_P1P2);
